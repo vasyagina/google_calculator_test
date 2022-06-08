@@ -1,5 +1,6 @@
 from pages.BaseApp import BasePage
 from selenium.webdriver.common.by import By
+from variables import expected_result
 
 
 class GoogleSearchLocators:
@@ -31,9 +32,9 @@ class SearchHelper(BasePage):
 
     def calculator_get_resultField_test(self):
         resultField = self.find_element(GoogleSearchLocators.LOCATOR_CALC_FIELD).text
-        return resultField
+        assert resultField == expected_result.exp_result_calc, 'Unexpected value'
 
 
     def calculator_get_historyField_test(self):
         historyField = self.find_element(GoogleSearchLocators.LOCATOR_CALC_HISTORY).text
-        return historyField
+        assert historyField == expected_result.exp_history_calc, 'Unexpected history'
